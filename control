@@ -1,0 +1,9 @@
+Package: com.nico671.ncutils
+Name: NCUtils
+Version: 1.0
+Architecture: iphoneos-arm
+Description: An awesome library of some sort!!
+Maintainer: nico671
+Author: nico671
+Section: System
+Tag: role::developer
