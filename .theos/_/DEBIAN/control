@@ -6,5 +6,6 @@ Maintainer: nico671
 Author: nico671
 Section: System
 Tag: role::developer
-Version: 1.0-1
+Depends: mobilesubstrate, preferenceloader
+Version: 1.0
 Installed-Size: 252

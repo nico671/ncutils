@@ -7,3 +7,4 @@ Maintainer: nico671
 Author: nico671
 Section: System
 Tag: role::developer
+Depends: mobilesubstrate, preferenceloader
