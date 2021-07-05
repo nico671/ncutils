@@ -1,18 +1,15 @@
+#import <Photos/Photos.h>
 #import <UIKit/UIKit.h>
-@interface UIColor(HexString)
-
-+ (UIColor *) colorWithHexString: (NSString *) hexString;
-
-@end
-
-
+#import <objc/runtime.h>
+#import <PhotosUI/PhotosUI.h>
 
 @interface PSSpecifier : NSObject
 -(id)propertyForKey:(id)arg1 ;
 -(void)setButtonAction:(SEL)arg1 ;
 -(void)setTarget:(id)arg1 ;
 @end
-@interface PSViewController : UIViewController 
+
+@interface PSViewController : UIViewController
 
 @property (nonatomic, retain) PSSpecifier *specifier;
 - (void)setParentController:(PSViewController *)controller;
@@ -20,14 +17,14 @@
 
 @end
 
-@interface PSTableCell : UITableViewCell 
+@interface PSTableCell : UITableViewCell
 -(id)specifier;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier specifier:(PSSpecifier *)specifier;
 
 @end
 
-@interface NCColorPicker : PSTableCell <UIColorPickerViewControllerDelegate>
-@property (atomic,retain) UIView* colorPreview;
-@property (atomic,retain) UIColorPickerViewController* colorViewController;
-@end
 
+@interface NCImagePicker : PSTableCell <PHPickerViewControllerDelegate>
+@property (atomic,retain) UIImageView * previewImage;
+@property (atomic,retain) PHPickerViewController* imageViewController;
+@end

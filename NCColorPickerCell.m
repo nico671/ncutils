@@ -1,4 +1,4 @@
-#import "NCColorPicker.h"
+#import "NCColorPickerCell.h"
 @implementation UIColor(HexString)
 
 + (UIColor *) colorWithHexString: (NSString *) hexString {
@@ -45,21 +45,21 @@
 }
 @end
 
-@implementation NCColorPicker
+@implementation NCColorPickerCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier specifier:(PSSpecifier *)specifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier specifier:specifier];
     if (self) {
-        self.colorPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        self.colorPreview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         [specifier setTarget:self];
         [specifier setButtonAction:@selector(openColorPickerView)];
         self.colorPreview.layer.borderColor = [UIColor grayColor].CGColor;
         self.colorPreview.layer.borderWidth = 2;
         self.colorPreview.layer.cornerRadius = 10;
+ 
         NSMutableDictionary *settings = [NSMutableDictionary dictionary];
 	    [settings addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/aquariusprefs.plist"]];
-        NSString *tempHexString;
-        tempHexString = [settings objectForKey:[specifier propertyForKey:@"key"]];
-        NSLog(@"[aquarius] %@",[settings objectForKey:[specifier propertyForKey:@"key"]]);
+        NSString *tempHexString = [settings objectForKey:[specifier propertyForKey:@"key"]];
+        NSLog(@"[aquarius] %@",tempHexString);
         self.colorPreview.backgroundColor = [UIColor colorWithHexString:tempHexString];
 
 
@@ -126,4 +126,3 @@ NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfF
 
 }
 @end
-
